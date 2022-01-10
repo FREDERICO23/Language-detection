@@ -3,8 +3,8 @@
 import pandas as pd
 import numpy as np
 import re          #regular expression
-import seaborn as sns
-import matplotlib.pyplot as plt
+#import seaborn as sns
+#import matplotlib.pyplot as plt
 import warnings
 warnings.simplefilter("ignore")
 
@@ -55,3 +55,12 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 accuracy = accuracy_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
 print("Accuracy is :",accuracy)
+
+def predict(text):
+     x = cv.transform([text]).toarray() # convert text to bag of words model (Vector)
+     language = model.predict(x) # predict the language
+     lang = le.inverse_transform(language) # find the language corresponding with the predicted value
+     print("The language is in", lang[0]) # printing the language
+     
+predict("I'm a boy")
+
